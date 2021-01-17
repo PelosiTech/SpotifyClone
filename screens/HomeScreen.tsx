@@ -5,15 +5,14 @@ import Album from '../components/Album'
 
 const album = {
   id: '1',
-  imageUri: '',
+  imageUri: 'https://i.scdn.co/image/ab67616d0000b273e14f11f796cef9f9a82691a7',
   artistsHeadline: 'Taylor Swift, Cardi Objective C, Avicii'
 }
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={{color: "white"}}>Hello</Text>
-      <Album album={} />
+      <Album album={album} />
     </View>
   );
 }
