@@ -1,18 +1,26 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import Album from '../components/Album'
+import AlbumComponent from '../components/Album'
+import AlbumCategory from "../components/AlbumCategory";
+import albumDetails from "../data/albumDetails";
 
-const album = {
+const AlbumCategoryData = albumDetails;
+
+const dataAlbum = {
   id: '1',
   imageUri: 'https://i.scdn.co/image/ab67616d0000b273e14f11f796cef9f9a82691a7',
   artistsHeadline: 'Taylor Swift, Cardi Objective C, Avicii'
 }
 
+
+
 export default function HomeScreen() {
+
   return (
     <View style={styles.container}>
-      <Album album={album} />
+      <AlbumCategory title={AlbumCategoryData[0].title} albums={AlbumCategoryData[0].albums} />
+      {/*<AlbumComponent album={dataAlbum} />*/}
     </View>
   );
 }
