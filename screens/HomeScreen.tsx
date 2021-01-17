@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 import AlbumComponent from '../components/Album'
 import AlbumCategory from "../components/AlbumCategory";
@@ -19,7 +19,16 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <AlbumCategory title={AlbumCategoryData[0].title} albums={AlbumCategoryData[0].albums} />
+      <FlatList
+        data={AlbumCategoryData}
+        renderItem={({item}) => (
+            <AlbumCategory
+            title={item.title}
+            albums={item.albums}
+            />
+        )}
+        keyExtractor={(item) => item.id}
+      />
       {/*<AlbumComponent album={dataAlbum} />*/}
     </View>
   );
