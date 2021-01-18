@@ -14,7 +14,6 @@ const AlbumCategory = (props: AlbumCategoryProps) => {
         <View style={styles.container}>
             <Text style={styles.text}>{props.title}</Text>
             <FlatList
-                style={styles.flatList}
                 data={props.albums}
                 renderItem={({item}) => <AlbumComponent album={item} />}
                 keyExtractor={( item ) => item.id}
