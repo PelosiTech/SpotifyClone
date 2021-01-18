@@ -1,5 +1,5 @@
 import  React, {useEffect} from 'react';
-import { View, Text } from 'react-native'
+import {View, Text, FlatList} from 'react-native'
 import { useRoute } from '@react-navigation/native';
 import SongListItem from "../components/SongListItem";
 
@@ -19,19 +19,19 @@ const data = {
         },
         {
             id: '2',
-            imageUri: 'https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg',
+            imageUri: 'https://cdn6.f-cdn.com/contestentries/1485199/27006121/5ca3e39ced7f1_thumb900.jpg',
             title: 'High on you',
             artist: 'Carlo',
         },
         {
             id: '3',
-            imageUri: 'https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg',
+            imageUri: 'https://images-na.ssl-images-amazon.com/images/I/61F66QURFyL.jpg',
             title: 'High on you',
             artist: 'Carlo',
         },
         {
             id: '4',
-            imageUri: 'https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg',
+            imageUri: 'https://images-na.ssl-images-amazon.com/images/I/61F66QURFyL.jpg',
             title: 'High on you',
             artist: 'Carlo',
         },
@@ -43,12 +43,29 @@ const data = {
         },
         {
             id: '6',
-            imageUri: 'https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg',
+            imageUri: 'https://cdn6.f-cdn.com/contestentries/1485199/27006121/5ca3e39ced7f1_thumb900.jpg',
             title: 'High on you',
             artist: 'Carlo',
         },
         {
             id: '7',
+            imageUri: 'https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg',
+            title: 'High on you',
+            artist: 'Carlo',
+        },
+        {
+            id: '8',
+            imageUri: 'https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg',
+            title: 'High on you',
+            artist: 'Carlo',
+        },
+        {
+            id: '9',
+            imageUri: 'https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg',
+            title: 'High on you',
+            artist: 'Carlo',
+        },        {
+            id: '10',
             imageUri: 'https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg',
             title: 'High on you',
             artist: 'Carlo',
@@ -65,7 +82,11 @@ const AlbumScreen = () => {
 
     return <View>
         <Text style={{color: 'white'}}>
-            <SongListItem song={data.songs[0]}/>
+            <FlatList
+                data={data.songs}
+                renderItem={({item}) => <SongListItem song={item} /> }
+                keyExtractor={(item) => item.id}
+            />
         </Text>
     </View>
 }
