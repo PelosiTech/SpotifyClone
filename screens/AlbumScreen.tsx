@@ -65,7 +65,6 @@ const AlbumScreen = () => {
 
     return <View>
         <Text style={{color: 'white'}}>
-            Album Screen
             <SongListItem song={data.songs[0]}/>
         </Text>
     </View>
