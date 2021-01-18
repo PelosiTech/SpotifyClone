@@ -2,6 +2,8 @@ import  React, {useEffect} from 'react';
 import {View, Text, FlatList} from 'react-native'
 import { useRoute } from '@react-navigation/native';
 import SongListItem from "../components/SongListItem";
+import AlbumHeader from "../components/AlbumHeader";
+import albumDetails from "../data/albumDetails";
 
 const data = {
     id: '11',
@@ -80,15 +82,16 @@ const AlbumScreen = () => {
         console.log(route)
     }, [])
 
-    return <View>
-        <Text style={{color: 'white'}}>
+    return (
+        <View>
             <FlatList
                 data={data.songs}
                 renderItem={({item}) => <SongListItem song={item} /> }
                 keyExtractor={(item) => item.id}
+                ListHeaderComponent={() => <AlbumHeader album={data} />}
             />
-        </Text>
-    </View>
+        </View>
+    )
 }
 
 export default AlbumScreen;
