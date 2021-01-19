@@ -12,10 +12,15 @@ const styles = StyleSheet.create({
         }),
         width: '100%',
         backgroundColor: "#131313",
-        flexDirection: 'row',
         borderColor: 'black',
         borderWidth: 2,
-        alignItems: 'center',
+    },
+    progress: {
+      height: 3,
+      backgroundColor: '#bcbcbc'
+    },
+    row: {
+        flexDirection: 'row',
     },
     rightContainer: {
         flex: 1,
