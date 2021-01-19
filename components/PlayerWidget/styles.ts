@@ -1,9 +1,15 @@
-import { StyleSheet} from "react-native";
-
+import { Platform, StyleSheet} from "react-native";
 const styles = StyleSheet.create({
     container: {
         position: "absolute",
-        bottom: 49,
+        ...Platform.select({
+            ios: {
+                bottom: 79,
+            },
+            android: {
+                bottom: 49,
+            },
+        }),
         width: '100%',
         backgroundColor: "#131313",
         flexDirection: 'row',
