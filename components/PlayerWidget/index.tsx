@@ -9,7 +9,7 @@ import {Sound} from "expo-av/build/Audio/Sound";
 
 const song = {
     id: '1',
-    uri: 'https://not-just-trash.s3-eu-west-1.amazonaws.com/WhatsApp+Audio+2020-09-22+at+14.20.25.mp4',
+    uri: 'https://not-just-trash.s3-eu-west-1.amazonaws.com/WhatsApp+Audio+2020-09-21+at+15.13.00.mp4',
     imageUri: 'https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg',
     title: 'High on you',
     artist: 'Carlo',
@@ -22,7 +22,6 @@ const PlayerWidget = () => {
     const [position, setPosition] = useState<number| null>(null);
 
     const onPlaybackStatusUpdate = (status: any) => {
-        console.log(status)
         setIsPlaying(status.isPlaying)
         setDuration(status.durationMillis)
         setPosition(status.positionMillis)
