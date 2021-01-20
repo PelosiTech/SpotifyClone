@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 
+import { API, graphqlOperation } from 'aws-amplify';
+
 import AlbumComponent from '../components/Album'
 import AlbumCategory from "../components/AlbumCategory";
 import albumDetails from "../data/albumDetails";
+import { listAlbumCategorys } from '../src/graphql/queries'
+import {useEffect} from "react";
 
 const AlbumCategoryData = albumDetails;
 
@@ -16,6 +20,19 @@ const dataAlbum = {
 
 
 export default function HomeScreen() {
+
+  const fetchAlbumCategories = async () => {
+    try {
+      const data = await API.graphql(graphqlOperation(listAlbumCategorys));
+      console.log(data)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  useEffect(() => {
+    fetchAlbumCategories ();
+  },[])
+
 
   return (
     <View style={styles.container}>
