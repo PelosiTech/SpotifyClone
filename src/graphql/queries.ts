@@ -51,6 +51,13 @@ export const getAlbum = /* GraphQL */ `
       artistsHeadline
       songs {
         nextToken
+        items {
+            id
+            imageUri
+            uri
+            artist
+            title
+        }
       }
       albumCategoryId
       albumCategory {
