@@ -3,6 +3,10 @@
 *By Carlo Pelosi 
 
 **Rebuilt API with GraphQL instead of using SpotifyAPI to have full access to use my songs and song names**
+<code><img height="50" src="https://s3.amazonaws.com/aws-mobile-hub-images/awsappsyncgithub.png"></code>
+<code><img height="50" src="https://s3.amazonaws.com/aws-mobile-hub-images/aws-amplify-logo.png"></code>
+<code><img height="50" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg"></code>
+<code><img height="50" src="https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-icon.svg"></code>
 
 **Table of Contents**
 * [Spotify App Overview](#Spotify-App-overview)
