@@ -1,25 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {Text, Image, View, TouchableOpacity} from 'react-native';
 import { Audio } from "expo-av";
 
 import styles from './styles'
-import {Song} from "../../types";
 import {AntDesign, FontAwesome} from "@expo/vector-icons";
 import {Sound} from "expo-av/build/Audio/Sound";
 
-const song = {
-    id: '1',
-    uri: 'https://not-just-trash.s3-eu-west-1.amazonaws.com/WhatsApp+Audio+2020-09-21+at+15.13.00.mp4',
-    imageUri: 'https://cache.boston.com/resize/bonzai-fba/Globe_Photo/2011/04/14/1302796985_4480/539w.jpg',
-    title: 'High on you',
-    artist: 'Carlo',
-}
+import { AppContext } from "../../AppContext";
+import { API, graphqlOperation } from 'aws-amplify';
+import { getSong } from "../../src/graphql/queries";
 
 const PlayerWidget = () => {
+    const [song, setSong] = useState(null);
     const [sound, setSound] = useState<Sound|null>(null);
     const [isPlaying, setIsPlaying] = useState<boolean>(true);
     const [duration, setDuration] = useState<number| null>(null);
     const [position, setPosition] = useState<number| null>(null);
+
+    const { songId } = useContext(AppContext);
+
+    useEffect(() => {
+        const fetchSong = async () => {
+            try {
+                const data = await API.graphql(graphqlOperation(getSong, {id: songId}))
+                setSong(data.data.getSong)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        fetchSong();
+    },[songId])
 
     const onPlaybackStatusUpdate = (status: any) => {
         setIsPlaying(status.isPlaying)
@@ -42,8 +53,10 @@ const PlayerWidget = () => {
     }
 
     useEffect(() => {
-        playCurrentSong();
-    },[])
+        if(song) {
+            playCurrentSong();
+        }
+    },[song])
 
     const onPlayPausePress = async () => {
         if(!sound) {
@@ -61,6 +74,10 @@ const PlayerWidget = () => {
             return 0;
         }
         return (position / duration) * 100;
+    }
+
+    if(!song) {
+        return null;
     }
 
 
