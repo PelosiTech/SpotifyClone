@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
     },
     nameContainer: {
-        flexDirection: "row",
+        flex: 2,
+        flexDirection: "column",
         alignItems: 'center',
     },
     title: {
